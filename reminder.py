@@ -4,6 +4,7 @@ import time
 import datetime
 import requests
 import os
+import json
 
 SCKEYS = {  # 微信推送api，到http://sct.ftqq.com/ 免费申请，不需要请留空
     "jyc": "SCT75973TaWGs5q1KAYUqptNTJgAmPsOi",
@@ -11,7 +12,19 @@ SCKEYS = {  # 微信推送api，到http://sct.ftqq.com/ 免费申请，不需要
     "wzy": "",
     "jhy": ""
     }
-on_duty = os.getenv('ON_DUTY')
+duty_order = ['yrz', 'jyc', 'jhy', 'wzy']
+
+with open("record.json",'r') as load_f:
+    load_dict = json.load(load_f)
+    print(load_dict)
+
+on_duty = duty_order[int(load_dict['duty_times'])%len(duty_order)]
+print(on_duty)
+
+load_dict['duty_times'] = load_dict['duty_times'] + 1
+with open("record.json","w") as dump_f:
+    json.dump(load_dict,dump_f)
+
 
 def remind():
     send_message("值日提醒", SCKEYS[on_duty], "hello, 今天你值日哦 ^_^")
@@ -20,8 +33,6 @@ def remind():
 
 
 def main():
-    logger.info("正在进行验证...")
-    send_message("hello world")
     remind()
 
 
