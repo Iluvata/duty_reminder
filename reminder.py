@@ -8,9 +8,9 @@ import json
 
 SCKEYS = {  # 微信推送api，到http://sct.ftqq.com/ 免费申请，不需要请留空
     "jyc": "SCT75973TaWGs5q1KAYUqptNTJgAmPsOi",
-    "yrz": "",
-    "wzy": "",
-    "jhy": ""
+    "yrz": "SCT76151TWwe3EuGQ1WFwPBjYc4nx3Fq1",
+    "wzy": "SCT74683TvDNNjkYEt9K9tsDWI7NtuyKX",
+    "jhy": "SCT76061T9TPuWaBXHo6irdOssUEY34qT"
     }
 duty_order = ['yrz', 'jyc', 'jhy', 'wzy']
 
